@@ -8,6 +8,9 @@ import Films from './ui/Films.jsx';
 
 //Temporary, until the official react version is out
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
+require ('../sass/main.scss');
+
 injectTapEventPlugin();
  
  ReactDOM.render(
