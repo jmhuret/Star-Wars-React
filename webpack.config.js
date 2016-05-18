@@ -7,11 +7,15 @@ module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
   entry: "./js/main.js",
-  plugins: debug ? [] : [
+  plugins: debug ? [
+    new ExtractTextPlugin('styles.css', {
+      allChunks: true
+    })
+  ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
-    new webpack.optimize.ExtractTextPlugin('style.css', {
+    new webpack.optimize.UglifyJsPlugin({ mangle: true, sourcemap: true }),
+    new ExtractTextPlugin('styles.css', {
       allChunks: false
     })
   ],
@@ -29,18 +33,18 @@ module.exports = {
       //SASS
       {
         test: /\.scss$/,
-        loader: debug ? "style!css!sass" : ExtractTextPlugin.extract('style', 'css!sass')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
       },
       //FONTS
       {
         test: /\.(otf|eot|svg|ttf|woff)/,
-        loader: 'url-loader?limit=8192'
+        loader: 'file?name=/fonts/[name].[ext]'
       }
     ]
   },
   output: {
-    path: __dirname + "/src/",
-    filename: "main.min.js",
+    path: __dirname + "/src/public",
+    filename: "[name].js",
     hot: true
   },
   

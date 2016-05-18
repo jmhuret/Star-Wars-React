@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import {ListItem} from 'material-ui/List';
+import ListItem from 'material-ui/List/ListItem';
 import AvMovieIcon from 'material-ui/svg-icons/av/movie';
 import Divider from 'material-ui/Divider';
  

@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 import Starship from './Starship.jsx';
 
-import {List} from 'material-ui/List';
+import List from 'material-ui/List';
  
 // App component - represents the whole app
 export default class Starships extends Component {
