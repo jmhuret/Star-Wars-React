@@ -7,20 +7,18 @@ module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
   entry: "./js/main.js",
-  plugins: debug ? [
-    new ExtractTextPlugin('styles.css', {
-      allChunks: true
-    })
-  ] : [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ mangle: true, sourcemap: true }),
-    new ExtractTextPlugin('styles.css', {
-      allChunks: false
-    })
-  ],
+  output: {
+    path: __dirname + "/src/public/",
+    filename: "[name].js"
+  },
   module: {
     loaders: [
+      //HTML
+      {
+        test: /\.html$/,
+        loader: 'file?name=[name].[ext]'
+      },
+      //JS/JSX
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
@@ -38,14 +36,21 @@ module.exports = {
       //FONTS
       {
         test: /\.(otf|eot|svg|ttf|woff)/,
-        loader: 'file?name=/fonts/[name].[ext]'
+        loader: 'file?name=fonts/[name].[ext]'
       }
     ]
   },
-  output: {
-    path: __dirname + "/src/public",
-    filename: "[name].js",
-    hot: true
-  },
+  plugins: debug ? [
+    new ExtractTextPlugin('styles.css', {
+      allChunks: false
+    })
+  ] : [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+    new ExtractTextPlugin('styles.css', {
+      allChunks: false
+    })
+  ],
   
 };
