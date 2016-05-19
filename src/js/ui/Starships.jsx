@@ -37,11 +37,9 @@ export default class Starships extends Component {
 
   render() {
     return (
-      <div>
-        <List>
-          {this.renderStarships()}
-        </List>
-      </div>
+      <List>
+        {this.renderStarships()}
+      </List>
     );
   }
 }

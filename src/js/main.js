@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+
+import Router from 'react-router/lib/Router';
+import Route from 'react-router/lib/Route';
+import IndexRoute from 'react-router/lib/IndexRoute';
+import hashHistory from 'react-router/lib/hashHistory';
 
 import App from './ui/App.jsx';
 import Starships from './ui/Starships.jsx';
