@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import List from 'material-ui/List';
-import Starship from './StarshipListItem.jsx';
+import Starship from './StarshipsListItem.jsx';
  
 // App component - represents the whole app
 export default class Starships extends Component {

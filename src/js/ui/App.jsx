@@ -5,6 +5,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Header from './layout/Header.jsx';
+import ContentArea from './layout/ContentArea.jsx';
 import Starships from './starships/Starships.jsx';
 
 const muiDark = getMuiTheme(darkBaseTheme);
@@ -20,7 +21,9 @@ export default class App extends Component {
         </MuiThemeProvider>
 
         <MuiThemeProvider muiTheme={getMuiTheme(muiDark)}>
-          {this.props.children}
+          <ContentArea>
+            {this.props.children}
+          </ContentArea>
         </MuiThemeProvider>
       </div>
     );

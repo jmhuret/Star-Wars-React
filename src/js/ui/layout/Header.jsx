@@ -9,7 +9,6 @@ import IconButton from 'material-ui/IconButton';
 import NavigationMenuIcon from 'material-ui/svg-icons/navigation/menu';
 import NavigationCloseIcon from 'material-ui/svg-icons/navigation/close';
  
-// App component - represents the whole app
 class Header extends Component {
 
   constructor(props) {

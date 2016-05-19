@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _sortBy from 'lodash/sortBy';
 import List from 'material-ui/List';
-import Film from './FilmListItem.jsx';
+import Film from './FilmsListItem.jsx';
 
  
 // App component - represents the whole app
