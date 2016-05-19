@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
-
-import Starship from './Starship.jsx';
-
 import List from 'material-ui/List';
+import Starship from './StarshipListItem.jsx';
  
 // App component - represents the whole app
 export default class Starships extends Component {
@@ -17,16 +14,16 @@ export default class Starships extends Component {
   }
  
   componentDidMount() {
-    this.serverRequest = $.get("http://swapi.co/api/starships/", function (result) {
-      console.log(result);
+    fetch('http://swapi.co/api/starships/').then(function (response) {
+      return response.json();
+    }.bind(this)).then(function (responseJSON) {
+      let starships = responseJSON.results;
+      console.log('Starships: ', starships);
+      
       this.setState({
-        starships: result.results
+        starships: starships
       });
     }.bind(this));
-  }
-
-  componentWillUnmount() {
-    this.serverRequest.abort();
   }
  
   renderStarships() {
@@ -43,7 +40,6 @@ export default class Starships extends Component {
     );
   }
 }
-
 
 /*
 BEGIN HERE: Populate the starships from the star wars api

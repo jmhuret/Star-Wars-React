@@ -7,8 +7,8 @@ import IndexRoute from 'react-router/lib/IndexRoute';
 import hashHistory from 'react-router/lib/hashHistory';
 
 import App from './ui/App.jsx';
-import Starships from './ui/Starships.jsx';
-import Films from './ui/Films.jsx';
+import Starships from './ui/starships/Starships.jsx';
+import Films from './ui/films/Films.jsx';
 
 //Temporary, until the official react version is out
 import injectTapEventPlugin from 'react-tap-event-plugin';

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
-
-import Film from './Film.jsx';
-
+import _sortBy from 'lodash/sortBy';
 import List from 'material-ui/List';
+import Film from './FilmListItem.jsx';
+
  
 // App component - represents the whole app
 export default class Films extends Component {
@@ -17,16 +16,17 @@ export default class Films extends Component {
   }
  
   componentDidMount() {
-    this.serverRequest = $.get("http://swapi.co/api/films/", function (result) {
-      console.log(result);
+    fetch('http://swapi.co/api/films/').then(function (response) {
+      return response.json();
+    }.bind(this)).then(function (responseJSON) {
+      let films = responseJSON.results;
+      console.log('Films: ', films);
+
+      films = _sortBy(films, 'episode_id');
       this.setState({
-        films: result.results
+        films: films
       });
     }.bind(this));
-  }
-
-  componentWillUnmount() {
-    this.serverRequest.abort();
   }
  
   renderFilms() {

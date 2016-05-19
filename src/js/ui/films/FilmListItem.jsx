@@ -2,16 +2,12 @@ import React, { Component, PropTypes } from 'react';
 
 import ListItem from 'material-ui/List/ListItem';
 import AvMovieIcon from 'material-ui/svg-icons/av/movie';
-import Divider from 'material-ui/Divider';
  
 // Film component - represents a single todo item
 export default class Film extends Component {
   render() {
     return (
-    	<div>
-	    	<ListItem primaryText={this.props.film.title} leftIcon={<AvMovieIcon />} />
-	    	<Divider/>
-    	</div>
+	    <ListItem primaryText={this.props.film.title} leftIcon={<AvMovieIcon />} />
     );
   }
 }
