@@ -13,15 +13,15 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = {isMenuOpen: false};
   }
 
   handleLeftIconAction () {
-    this.setState({open: !this.state.open});
+    this.setState({isMenuOpen: !this.state.isMenuOpen});
   }
 
   handleClose () {
-    this.setState({open: false});
+    this.setState({isMenuOpen: false});
   }
  
   render() {
@@ -36,8 +36,8 @@ class Header extends Component {
         </AppBar>
 
         <Drawer docked={false}
-          open={this.state.open}
-          onRequestChange={(open) => this.setState({open})}>
+          open={this.state.isMenuOpen}
+          onRequestChange={(isMenuOpen) => this.setState({isMenuOpen})}>
           <AppBar
             title="Menu"
             showMenuIconButton={false}
@@ -65,5 +65,5 @@ class Header extends Component {
 export default Header;
 
 Header.propTypes = {
-  open: React.PropTypes.bool
+  isMenuOpen: React.PropTypes.bool
 };

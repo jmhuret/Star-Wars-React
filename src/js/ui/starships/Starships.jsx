@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import List from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 import Starship from './StarshipsListItem.jsx';
  
 // App component - represents the whole app
@@ -35,6 +36,7 @@ export default class Starships extends Component {
   render() {
     return (
       <List>
+        <Subheader>Starships</Subheader>
         {this.renderStarships()}
       </List>
     );

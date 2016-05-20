@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import _sortBy from 'lodash/sortBy';
 import List from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 import Film from './FilmsListItem.jsx';
 
  
@@ -39,6 +40,7 @@ export default class Films extends Component {
     return (
       <div>
         <List>
+          <Subheader>Films</Subheader>
           {this.renderFilms()}
         </List>
       </div>
