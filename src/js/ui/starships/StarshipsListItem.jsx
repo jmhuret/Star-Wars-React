@@ -5,7 +5,7 @@ import ListItem from 'material-ui/List/ListItem';
 import MapsFlight from 'material-ui/svg-icons/maps/flight';
  
 // Starship component - represents a single todo item
-class Starship extends Component {
+class StarshipListItem extends Component {
 
 	constructor (props) {
 		super(props);
@@ -30,7 +30,7 @@ class Starship extends Component {
 
 export default StarshipListItem;
  
-Starship.propTypes = {
+StarshipListItem.propTypes = {
   // This component gets the starship to display through a React prop.
   // We can use propTypes to indicate it is required
   starship: PropTypes.object.isRequired,
