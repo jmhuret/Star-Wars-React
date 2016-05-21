@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Starship from './StarshipsListItem.jsx';
+import StarshipListItem from './StarshipsListItem.jsx';
  
 // App component - represents the whole app
-export default class Starships extends Component {
+class Starships extends Component {
 
   constructor (props) {
     super(props);
+    console.log('List Props', props);
 
     this.state = {
       starships: []
@@ -26,10 +28,14 @@ export default class Starships extends Component {
       });
     }.bind(this));
   }
+
+  viewStarship(id) {
+    this.props.router.push(`starships/${id}`);
+  }
  
   renderStarships() {
     return this.state.starships.map((starship, index) => (
-      <Starship key={index} starship={starship} />
+      <StarshipListItem key={index} starship={starship} viewStarship={this.viewStarship.bind(this)}/>
     ));
   }
 
@@ -43,9 +49,8 @@ export default class Starships extends Component {
   }
 }
 
-/*
-BEGIN HERE: Populate the starships from the star wars api
-*/
+export default withRouter(Starships);
+
 Starships.propTypes = {
   starships: React.PropTypes.array
 };

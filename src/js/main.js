@@ -9,6 +9,7 @@ import CreateHashHistory from 'history/lib/createHashHistory';
 
 import Layout from './ui/layout/Layout.jsx';
 import Starships from './ui/starships/Starships.jsx';
+import StarshipDetail from './ui/starships/StarshipDetail.jsx';
 import Films from './ui/films/Films.jsx';
 
 //Temporary, until the official react version is out
@@ -28,8 +29,9 @@ const hashHistory = UseRouterHistory(CreateHashHistory)({
 ReactDOM.render(
  	<Router history={hashHistory}>
   		<Route path="/" component={Layout}>
-  			<Route path="starships" component={Starships}></Route>
-  			<Route path="films" component={Films}></Route>
+  			<Route name="starships" path="starships" component={Starships}></Route>
+  			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>
+  			<Route name="films" path="films" component={Films}></Route>
   		</Route>
   	</Router>
 , document.getElementById('render-target'));

@@ -8,6 +8,8 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import NavigationMenuIcon from 'material-ui/svg-icons/navigation/menu';
 import NavigationCloseIcon from 'material-ui/svg-icons/navigation/close';
+
+require ('./header.scss');
  
 class Header extends Component {
 
@@ -37,7 +39,8 @@ class Header extends Component {
 
         <Drawer docked={false}
           open={this.state.isMenuOpen}
-          onRequestChange={(isMenuOpen) => this.setState({isMenuOpen})}>
+          onRequestChange={(isMenuOpen) => this.setState({isMenuOpen})}
+          className="drawer-menu">
           <AppBar
             title="Menu"
             showMenuIconButton={false}
@@ -48,12 +51,12 @@ class Header extends Component {
           </AppBar>
           <MenuItem
             onTouchTap={this.handleClose.bind(this)}
-            containerElement={<Link to="starships" />}>
+            containerElement={<Link to="starships" activeClassName="active"/>}>
               Starships
           </MenuItem>
           <MenuItem 
             onTouchTap={this.handleClose.bind(this)}
-            containerElement={<Link to="films" />}>
+            containerElement={<Link to="films" activeClassName="active"/>}>
               Films
           </MenuItem>
         </Drawer>
