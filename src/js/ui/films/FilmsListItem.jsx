@@ -7,10 +7,7 @@ import AvMovieIcon from 'material-ui/svg-icons/av/movie';
 export default class Film extends Component {
 
 	handleTouchTap() {
-		const url = this.props.film.url;
-  	let chunks = url.split('/');
-
-		this.props.viewFilm(chunks[5]);
+    this.props.viewFilm(this.props.film);
 	}
 
   render() {
