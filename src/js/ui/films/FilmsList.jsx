@@ -8,8 +8,6 @@ import Drawer from 'material-ui/Drawer';
 import FilmListItem from './FilmsListItem.jsx';
 import FilmDrawerDetail from './FilmDrawerDetail.jsx';
 
- 
-// App component - represents the whole app
 class FilmsList extends Component {
 
   constructor (props) {
@@ -75,10 +73,6 @@ class FilmsList extends Component {
 
 export default FilmsList;
 
-
-/*
-BEGIN HERE: Populate the films from the star wars api
-*/
 FilmsList.propTypes = {
   films: React.PropTypes.array
 };
