@@ -5,7 +5,7 @@ import Subheader from 'material-ui/Subheader';
 import StarshipListItem from './StarshipsListItem.jsx';
  
 // App component - represents the whole app
-class Starships extends Component {
+class StarshipsList extends Component {
 
   constructor (props) {
     super(props);
@@ -33,7 +33,7 @@ class Starships extends Component {
     this.props.router.push(`starships/${id}`);
   }
  
-  renderStarships() {
+  renderStarshipsListItems() {
     return this.state.starships.map((starship, index) => (
       <StarshipListItem key={index} starship={starship} viewStarship={this.viewStarship.bind(this)}/>
     ));
@@ -43,14 +43,14 @@ class Starships extends Component {
     return (
       <List>
         <Subheader>Starships</Subheader>
-        {this.renderStarships()}
+        {this.renderStarshipsListItems()}
       </List>
     );
   }
 }
 
-export default withRouter(Starships);
+export default withRouter(StarshipsList);
 
-Starships.propTypes = {
+StarshipsList.propTypes = {
   starships: React.PropTypes.array
 };

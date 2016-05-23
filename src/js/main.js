@@ -8,7 +8,7 @@ import UseRouterHistory from 'react-router/lib/useRouterHistory';
 import CreateHashHistory from 'history/lib/createHashHistory';
 
 import Layout from './ui/layout/Layout.jsx';
-import Starships from './ui/starships/Starships.jsx';
+import StarshipsList from './ui/starships/StarshipsList.jsx';
 import StarshipDetail from './ui/starships/StarshipDetail.jsx';
 import Films from './ui/films/Films.jsx';
 
@@ -29,7 +29,7 @@ const hashHistory = UseRouterHistory(CreateHashHistory)({
 ReactDOM.render(
  	<Router history={hashHistory}>
   		<Route path="/" component={Layout}>
-  			<Route name="starships" path="starships" component={Starships}></Route>
+  			<Route name="starships" path="starships" component={StarshipsList}></Route>
   			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>
   			<Route name="films" path="films" component={Films}></Route>
   		</Route>
