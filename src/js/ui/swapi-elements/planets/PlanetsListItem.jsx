@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import ListItem from 'material-ui/List/ListItem';
 import LanguageIcon from 'material-ui/svg-icons/action/language';
  
-class PlanetListItem extends Component {
+class PlanetsListItem extends Component {
 
 	handleTouchTap() {
     this.props.viewPlanet(this.props.planet);
@@ -17,8 +17,8 @@ class PlanetListItem extends Component {
   }
 }
 
-export default PlanetListItem;
+export default PlanetsListItem;
  
-PlanetListItem.propTypes = {
+PlanetsListItem.propTypes = {
   planet: PropTypes.object.isRequired,
 };

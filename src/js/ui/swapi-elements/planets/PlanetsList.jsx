@@ -3,14 +3,13 @@ import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
 
-import PlanetListItem from './PlanetListItem.jsx';
+import PlanetListItem from './PlanetsListItem.jsx';
 import PlanetDrawerDetail from './PlanetDrawerDetail.jsx';
 
 class PlanetsList extends Component {
 
 	constructor (props) {
     super(props);
-    console.log('List Props', props);
 
     this.state = {
       planets: [],

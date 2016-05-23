@@ -10,7 +10,6 @@ class VehiclesList extends Component {
 
   constructor (props) {
     super(props);
-    console.log('List Props', props);
 
     this.state = {
       vehicles: [],

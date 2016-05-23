@@ -16,6 +16,8 @@ import PlanetsList from './ui/swapi-elements/planets/PlanetsList.jsx';
 import PlanetDetail from './ui/swapi-elements/planets/PlanetDetail.jsx';
 import VehiclesList from './ui/swapi-elements/vehicles/VehiclesList.jsx';
 import VehicleDetail from './ui/swapi-elements/vehicles/VehicleDetail.jsx';
+import PeopleList from './ui/swapi-elements/people/PeopleList.jsx';
+import PersonDetail from './ui/swapi-elements/people/PersonDetail.jsx';
 
 //Temporary, until the official react version is out
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -42,6 +44,8 @@ ReactDOM.render(
   			<Route name="planet" path="planets/:id" component={PlanetDetail}></Route>
         <Route name="vehicles" path="vehicles" component={VehiclesList}></Route>
         <Route name="vehicle" path="vehicles/:id" component={VehicleDetail}></Route>
+        <Route name="people" path="people" component={PeopleList}></Route>
+        <Route name="person" path="people/:id" component={PersonDetail}></Route>
   		</Route>
   	</Router>
 , document.getElementById('render-target'));
