@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import MenuItem from 'material-ui/MenuItem';
 
+import AvMovieIcon from 'material-ui/svg-icons/av/movie';
+import LanguageIcon from 'material-ui/svg-icons/action/language';
+import MapsFlightIcon from 'material-ui/svg-icons/maps/flight';
+import TramIcon from 'material-ui/svg-icons/maps/tram';
+
+
 class HeaderMenuItems extends Component {
 
 	handleTouchTap() {
@@ -13,18 +19,30 @@ class HeaderMenuItems extends Component {
 			<div>
 				<MenuItem 
 	        onTouchTap={this.handleTouchTap.bind(this)}
-	        containerElement={<Link to="films" activeClassName="active"/>}>
+	        containerElement={<Link to="films" activeClassName="active"/>}
+	        leftIcon={<AvMovieIcon /> }>
 	          Films
 	      </MenuItem>
-	      <MenuItem
-	        onTouchTap={this.handleTouchTap.bind(this)}
-	        containerElement={<Link to="starships" activeClassName="active"/>}>
-	          Starships
-	      </MenuItem>
+	      
 	      <MenuItem
 	      	onTouchTap={this.handleTouchTap.bind(this)}
-	      	containerElement={<Link to="planets" activeClassName="active"/>}>
+	      	containerElement={<Link to="planets" activeClassName="active"/>}
+	      	leftIcon={<LanguageIcon />}>
 	      		Planets
+	      </MenuItem>
+
+	      <MenuItem
+	        onTouchTap={this.handleTouchTap.bind(this)}
+	        containerElement={<Link to="starships" activeClassName="active"/>}
+	      	leftIcon={<MapsFlightIcon />}>
+	          Starships
+	      </MenuItem>
+
+	      <MenuItem
+	      	onTouchTap={this.handleTouchTap.bind(this)}
+	      	containerElement={<Link to="vehicles" activeClassName="active"/>}
+	      	leftIcon={<TramIcon />}>
+	      		Vehicles
 	      </MenuItem>
       </div>
     )
