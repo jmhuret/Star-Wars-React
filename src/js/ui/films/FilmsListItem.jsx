@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import ListItem from 'material-ui/List/ListItem';
 import AvMovieIcon from 'material-ui/svg-icons/av/movie';
  
-export default class Film extends Component {
+class FilmListItem extends Component {
 
 	handleTouchTap() {
     this.props.viewFilm(this.props.film);
@@ -16,7 +16,9 @@ export default class Film extends Component {
     );
   }
 }
+
+export default FilmListItem
  
-Film.propTypes = {
+FilmListItem.propTypes = {
   film: PropTypes.object.isRequired,
 };

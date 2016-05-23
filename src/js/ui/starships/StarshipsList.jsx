@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
+import Drawer from 'material-ui/Drawer';
+
 import StarshipListItem from './StarshipsListItem.jsx';
+import StarshipDrawerDetail from './StarshipDrawerDetail.jsx';
  
-// App component - represents the whole app
 class StarshipsList extends Component {
 
   constructor (props) {
@@ -12,7 +13,10 @@ class StarshipsList extends Component {
     console.log('List Props', props);
 
     this.state = {
-      starships: []
+      starships: [],
+      isDetailOpen: false,
+      drawerWidth: 0.9 * window.innerWidth,
+      selectedStarship: {},
     }
   }
  
@@ -24,13 +28,14 @@ class StarshipsList extends Component {
       console.log('Starships: ', starships);
       
       this.setState({
-        starships: starships
+        starships: starships,
+        selectedStarship: starships[0] || {}
       });
     }.bind(this));
   }
 
-  viewStarship(id) {
-    this.props.router.push(`starships/${id}`);
+  viewStarship(starship) {
+    this.setState({isDetailOpen: true, selectedStarship: starship});
   }
  
   renderStarshipsListItems() {
@@ -39,17 +44,30 @@ class StarshipsList extends Component {
     ));
   }
 
+  handleCloseDetail () {
+    this.setState({isDetailOpen: false});
+  }
+
   render() {
     return (
       <List>
         <Subheader>Starships</Subheader>
         {this.renderStarshipsListItems()}
+
+        <Drawer docked={false}
+          open={this.state.isDetailOpen}
+          openSecondary={true}
+          onRequestChange={(isDetailOpen) => this.setState({isDetailOpen})}
+          width={this.state.drawerWidth}>
+          <StarshipDrawerDetail handleCloseDetail={this.handleCloseDetail.bind(this)}
+            starship={this.state.selectedStarship}/>
+        </Drawer>
       </List>
     );
   }
 }
 
-export default withRouter(StarshipsList);
+export default StarshipsList;
 
 StarshipsList.propTypes = {
   starships: React.PropTypes.array

@@ -31,7 +31,7 @@ class FilmsList extends Component {
       films = _sortBy(films, 'episode_id');
       this.setState({
         films: films,
-        selectedFilm: films[0]
+        selectedFilm: films[0] || {}
       });
     }.bind(this));
   }
