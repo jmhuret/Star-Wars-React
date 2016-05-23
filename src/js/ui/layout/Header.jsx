@@ -49,15 +49,15 @@ class Header extends Component {
                 <NavigationCloseIcon />
               </IconButton>}>
           </AppBar>
-          <MenuItem
-            onTouchTap={this.handleClose.bind(this)}
-            containerElement={<Link to="starships" activeClassName="active"/>}>
-              Starships
-          </MenuItem>
           <MenuItem 
             onTouchTap={this.handleClose.bind(this)}
             containerElement={<Link to="films" activeClassName="active"/>}>
               Films
+          </MenuItem>
+          <MenuItem
+            onTouchTap={this.handleClose.bind(this)}
+            containerElement={<Link to="starships" activeClassName="active"/>}>
+              Starships
           </MenuItem>
         </Drawer>
       </div>
