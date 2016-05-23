@@ -7,6 +7,7 @@ import LanguageIcon from 'material-ui/svg-icons/action/language';
 import MapsFlightIcon from 'material-ui/svg-icons/maps/flight';
 import TramIcon from 'material-ui/svg-icons/maps/tram';
 import PersonIcon from 'material-ui/svg-icons/social/person-outline';
+import BugReportIcon from 'material-ui/svg-icons/action/bug-report';
 
 
 class HeaderMenuItems extends Component {
@@ -51,6 +52,13 @@ class HeaderMenuItems extends Component {
 	      	containerElement={<Link to="people" activeClassName="active"/>}
 	      	leftIcon={<PersonIcon />}>
 	      		People
+	      </MenuItem>
+
+	      <MenuItem
+	      	onTouchTap={this.handleTouchTap.bind(this)}
+	      	containerElement={<Link to="species" activeClassName="active"/>}
+	      	leftIcon={<BugReportIcon />}>
+	      		species
 	      </MenuItem>
       </div>
     )
