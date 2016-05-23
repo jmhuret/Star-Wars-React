@@ -7,12 +7,6 @@ import MapsFlight from 'material-ui/svg-icons/maps/flight';
 // Starship component - represents a single todo item
 class StarshipListItem extends Component {
 
-	constructor (props) {
-		super(props);
-
-		console.log('list item props', props);
-	}
-
 	handleTouchTap() {
 		const url = this.props.starship.url;
   	let chunks = url.split('/');

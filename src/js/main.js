@@ -10,7 +10,8 @@ import CreateHashHistory from 'history/lib/createHashHistory';
 import Layout from './ui/layout/Layout.jsx';
 import StarshipsList from './ui/starships/StarshipsList.jsx';
 import StarshipDetail from './ui/starships/StarshipDetail.jsx';
-import Films from './ui/films/Films.jsx';
+import FilmsList from './ui/films/FilmsList.jsx';
+import FilmDetail from './ui/films/FilmDetail.jsx';
 
 //Temporary, until the official react version is out
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -31,7 +32,8 @@ ReactDOM.render(
   		<Route path="/" component={Layout}>
   			<Route name="starships" path="starships" component={StarshipsList}></Route>
   			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>
-  			<Route name="films" path="films" component={Films}></Route>
+  			<Route name="films" path="films" component={FilmsList}></Route>
+  			<Route name="film" path="films/:id" component={FilmDetail}></Route>
   		</Route>
   	</Router>
 , document.getElementById('render-target'));

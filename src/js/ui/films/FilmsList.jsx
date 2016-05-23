@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import _sortBy from 'lodash/sortBy';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
@@ -6,7 +7,7 @@ import Film from './FilmsListItem.jsx';
 
  
 // App component - represents the whole app
-export default class Films extends Component {
+class FilmsList extends Component {
 
   constructor (props) {
     super(props);
@@ -29,10 +30,14 @@ export default class Films extends Component {
       });
     }.bind(this));
   }
+
+  viewFilm(id) {
+    this.props.router.push(`films/${id}`);
+  }
  
-  renderFilms() {
+  renderFilmsList() {
     return this.state.films.map((film, index) => (
-      <Film key={index} film={film} />
+      <Film key={index} film={film} viewFilm={this.viewFilm.bind(this)}/>
     ));
   }
 
@@ -41,17 +46,19 @@ export default class Films extends Component {
       <div>
         <List>
           <Subheader>Films</Subheader>
-          {this.renderFilms()}
+          {this.renderFilmsList()}
         </List>
       </div>
     );
   }
 }
 
+export default withRouter(FilmsList);
+
 
 /*
 BEGIN HERE: Populate the films from the star wars api
 */
-Films.propTypes = {
+FilmsList.propTypes = {
   films: React.PropTypes.array
 };

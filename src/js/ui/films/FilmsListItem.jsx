@@ -5,9 +5,18 @@ import AvMovieIcon from 'material-ui/svg-icons/av/movie';
  
 // Film component - represents a single todo item
 export default class Film extends Component {
+
+	handleTouchTap() {
+		const url = this.props.film.url;
+  	let chunks = url.split('/');
+
+		this.props.viewFilm(chunks[5]);
+	}
+
   render() {
     return (
-	    <ListItem primaryText={this.props.film.title} leftIcon={<AvMovieIcon />} />
+	    <ListItem primaryText={this.props.film.title} leftIcon={<AvMovieIcon />} 
+	    	onTouchTap={this.handleTouchTap.bind(this)}/>
     );
   }
 }
