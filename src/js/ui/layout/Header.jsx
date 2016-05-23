@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 
 import IconButton from 'material-ui/IconButton';
 import NavigationMenuIcon from 'material-ui/svg-icons/navigation/menu';
 import NavigationCloseIcon from 'material-ui/svg-icons/navigation/close';
+
+import HeaderMenuItems from './HeaderMenuItems.jsx';
 
 require ('./header.scss');
  
@@ -49,16 +49,7 @@ class Header extends Component {
                 <NavigationCloseIcon />
               </IconButton>}>
           </AppBar>
-          <MenuItem 
-            onTouchTap={this.handleClose.bind(this)}
-            containerElement={<Link to="films" activeClassName="active"/>}>
-              Films
-          </MenuItem>
-          <MenuItem
-            onTouchTap={this.handleClose.bind(this)}
-            containerElement={<Link to="starships" activeClassName="active"/>}>
-              Starships
-          </MenuItem>
+          <HeaderMenuItems handleClose={this.handleClose.bind(this)}/>
         </Drawer>
       </div>
     );

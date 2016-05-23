@@ -12,6 +12,8 @@ import FilmsList from './ui/swapi-elements/films/FilmsList.jsx';
 import FilmDetail from './ui/swapi-elements/films/FilmDetail.jsx';
 import StarshipsList from './ui/swapi-elements/starships/StarshipsList.jsx';
 import StarshipDetail from './ui/swapi-elements/starships/StarshipDetail.jsx';
+import PlanetsList from './ui/swapi-elements/planets/PlanetsList.jsx';
+import PlanetDetail from './ui/swapi-elements/planets/PlanetDetail.jsx';
 
 //Temporary, until the official react version is out
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -34,6 +36,8 @@ ReactDOM.render(
   			<Route name="film" path="films/:id" component={FilmDetail}></Route>
   			<Route name="starships" path="starships" component={StarshipsList}></Route>
   			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>
+  			<Route name="planets" path="planets" component={PlanetsList}></Route>
+  			<Route name="planet" path="planets/:id" component={PlanetDetail}></Route>
   		</Route>
   	</Router>
 , document.getElementById('render-target'));
