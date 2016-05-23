@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import _sortBy from 'lodash/sortBy';
 
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import NavigationCloseIcon from 'material-ui/svg-icons/navigation/close';
 
 import FilmListItem from './FilmsListItem.jsx';
 import FilmDrawerDetail from './FilmDrawerDetail.jsx';
@@ -43,7 +39,6 @@ class FilmsList extends Component {
   }
 
   viewFilm(film) {
-    //this.props.router.push(`films/${id}`);
     this.setState({isDetailOpen: true, selectedFilm: film});
   }
  
@@ -78,7 +73,7 @@ class FilmsList extends Component {
   }
 }
 
-export default withRouter(FilmsList);
+export default FilmsList;
 
 
 /*
