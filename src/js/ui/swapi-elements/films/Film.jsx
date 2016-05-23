@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 
 class Film extends Component {
 
@@ -21,10 +20,6 @@ class Film extends Component {
 				    <CardText expandable={false}>
 				      Opening: {this.props.film.opening_crawl}
 				    </CardText>
-				    <CardActions expandable={false}>
-				    	<FlatButton label="Action1" />
-				    	<FlatButton label="Action2" />
-				    </CardActions>
 				</Card>
 			</div>
 		)

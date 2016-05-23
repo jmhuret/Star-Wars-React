@@ -8,11 +8,10 @@ import UseRouterHistory from 'react-router/lib/useRouterHistory';
 import CreateHashHistory from 'history/lib/createHashHistory';
 
 import Layout from './ui/layout/Layout.jsx';
-import FilmsList from './ui/films/FilmsList.jsx';
-import FilmDetail from './ui/films/FilmDetail.jsx';
-import StarshipsList from './ui/starships/StarshipsList.jsx';
-import StarshipDetail from './ui/starships/StarshipDetail.jsx';
-
+import FilmsList from './ui/swapi-elements/films/FilmsList.jsx';
+import FilmDetail from './ui/swapi-elements/films/FilmDetail.jsx';
+import StarshipsList from './ui/swapi-elements/starships/StarshipsList.jsx';
+import StarshipDetail from './ui/swapi-elements/starships/StarshipDetail.jsx';
 
 //Temporary, until the official react version is out
 import injectTapEventPlugin from 'react-tap-event-plugin';

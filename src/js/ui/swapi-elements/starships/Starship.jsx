@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 
 class Starship extends Component {
 
@@ -21,10 +20,6 @@ class Starship extends Component {
 				    <CardText expandable={false}>
 				      Capacity: {this.props.starship.crew}
 				    </CardText>
-				    <CardActions expandable={false}>
-				    	<FlatButton label="Action1" />
-				    	<FlatButton label="Action2" />
-				    </CardActions>
 				</Card>
 			</div>
 		)
