@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import Pagination from '../../layout/Pagination.jsx';
 import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import StarshipListItem from './StarshipsListItem.jsx';
@@ -16,22 +17,31 @@ class StarshipsList extends Component {
       starships: [],
       isDetailOpen: false,
       showLoadingIcon: true,
+      currentPage: 1,
+      totalPages: 1,
       drawerWidth: 0.9 * window.innerWidth,
       selectedStarship: {},
     }
   }
  
   componentDidMount() {
-    fetch('http://swapi.co/api/starships/').then(function (response) {
+    this.getStarships();
+  }
+
+  getStarships() {
+    let url='http://swapi.co/api/starships/?page=' + this.state.currentPage;
+
+    fetch(url).then(function (response) {
       return response.json();
     }.bind(this)).then(function (responseJSON) {
       let starships = responseJSON.results;
-      console.log('Starships: ', starships);
+      console.log('Starships response: ', responseJSON);
       
       this.setState({
         starships: starships,
         selectedStarship: starships[0] || {},
-        showLoadingIcon: false
+        showLoadingIcon: false,
+        totalPages: Math.ceil(responseJSON.count / 10)
       });
     }.bind(this));
   }
@@ -50,13 +60,36 @@ class StarshipsList extends Component {
     this.setState({isDetailOpen: false});
   }
 
+  prevPage() {
+    if (this.state.currentPage > 1) {
+      this.setState({currentPage: this.state.currentPage - 1});
+    }
+  }
+
+  nextPage() {
+    if (this.state.currentPage !== this.state.totalPages) {
+      this.setState({currentPage: this.state.currentPage + 1});
+      setTimeout(function () {
+        this.getStarships();
+      }.bind(this), 0);
+    }
+  }
+
   render() {
     return (
       <List>
         <Subheader>Starships</Subheader>
         {this.renderStarshipsListItems()}
 
-        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
+        <Pagination 
+          prevPage = {this.prevPage.bind(this)}
+          nextPage = {this.nextPage.bind(this)} 
+          currentPage = {this.state.currentPage}
+          totalPages = {this.state.totalPages}
+          hidden={this.state.showLoadingIcon ? 'hidden': ''}
+          />
+
+        <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}

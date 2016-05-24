@@ -1,0 +1,25 @@
+.pagination {
+	margin-top: 1rem;
+	padding: 1rem 0;
+	display: table;
+	width: 100%;
+
+	.previousButton {
+		display: table-cell;
+		width: 33%;
+		text-align: left;
+	}
+
+	.currentPage {
+		display: table-cell;
+		width: 33%;
+		text-align: center;
+		color: white;
+	}
+
+	.nextButton {
+		display: table-cell;
+		width: 33%;
+		text-align: right;
+	}
+}
