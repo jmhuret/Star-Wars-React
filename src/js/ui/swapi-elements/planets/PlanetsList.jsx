@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import PlanetListItem from './PlanetsListItem.jsx';
 import PlanetDrawerDetail from './PlanetDrawerDetail.jsx';
@@ -14,6 +15,7 @@ class PlanetsList extends Component {
     this.state = {
       planets: [],
       isDetailOpen: false,
+      showLoadingIcon: true,
       drawerWidth: 0.9 * window.innerWidth,
       selectedPlanet: {},
     }
@@ -28,7 +30,8 @@ class PlanetsList extends Component {
       
       this.setState({
         planets: planets,
-        selectedPlanet: planets[0] || {}
+        selectedPlanet: planets[0] || {},
+        showLoadingIcon: false
       });
     }.bind(this));
   }
@@ -52,6 +55,8 @@ class PlanetsList extends Component {
       <List>
         <Subheader>Planets</Subheader>
         {this.renderPlanetsListItems()}
+
+        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}

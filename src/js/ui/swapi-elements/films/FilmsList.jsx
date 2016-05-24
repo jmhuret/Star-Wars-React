@@ -4,6 +4,7 @@ import _sortBy from 'lodash/sortBy';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import FilmListItem from './FilmsListItem.jsx';
 import FilmDrawerDetail from './FilmDrawerDetail.jsx';
@@ -16,6 +17,7 @@ class FilmsList extends Component {
     this.state = {
       films: [],
       isDetailOpen: false,
+      showLoadingIcon: true,
       drawerWidth: 0.9 * window.innerWidth,
       selectedFilm: {},
     }
@@ -31,7 +33,8 @@ class FilmsList extends Component {
       films = _sortBy(films, 'episode_id');
       this.setState({
         films: films,
-        selectedFilm: films[0] || {}
+        selectedFilm: films[0] || {},
+        showLoadingIcon: false
       });
     }.bind(this));
   }
@@ -56,6 +59,8 @@ class FilmsList extends Component {
         <List>
           <Subheader>Films</Subheader>
           {this.renderFilmsList()}
+
+          <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
 
           <Drawer docked={false}
             open={this.state.isDetailOpen}

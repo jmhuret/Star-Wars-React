@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import StarshipListItem from './StarshipsListItem.jsx';
 import StarshipDrawerDetail from './StarshipDrawerDetail.jsx';
@@ -14,6 +15,7 @@ class StarshipsList extends Component {
     this.state = {
       starships: [],
       isDetailOpen: false,
+      showLoadingIcon: true,
       drawerWidth: 0.9 * window.innerWidth,
       selectedStarship: {},
     }
@@ -28,7 +30,8 @@ class StarshipsList extends Component {
       
       this.setState({
         starships: starships,
-        selectedStarship: starships[0] || {}
+        selectedStarship: starships[0] || {},
+        showLoadingIcon: false
       });
     }.bind(this));
   }
@@ -53,6 +56,8 @@ class StarshipsList extends Component {
         <Subheader>Starships</Subheader>
         {this.renderStarshipsListItems()}
 
+        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
+
         <Drawer docked={false}
           open={this.state.isDetailOpen}
           openSecondary={true}
@@ -61,6 +66,8 @@ class StarshipsList extends Component {
           <StarshipDrawerDetail handleCloseDetail={this.handleCloseDetail.bind(this)}
             starship={this.state.selectedStarship}/>
         </Drawer>
+
+
       </List>
     );
   }

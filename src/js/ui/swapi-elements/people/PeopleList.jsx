@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import PeopleListItem from './PeopleListItem.jsx';
 import PersonDrawerDetail from './PersonDrawerDetail.jsx';
@@ -14,6 +15,7 @@ class PeopleList extends Component {
     this.state = {
       people: [],
       isDetailOpen: false,
+      showLoadingIcon: true,
       drawerWidth: 0.9 * window.innerWidth,
       selectedPerson: {},
     }
@@ -28,7 +30,8 @@ class PeopleList extends Component {
       
       this.setState({
         people: people,
-        selectedPerson: people[0] || {}
+        selectedPerson: people[0] || {},
+        showLoadingIcon: false
       });
     }.bind(this));
   }
@@ -52,6 +55,8 @@ class PeopleList extends Component {
       <List>
         <Subheader>People</Subheader>
         {this.renderPeopleListItems()}
+
+        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}

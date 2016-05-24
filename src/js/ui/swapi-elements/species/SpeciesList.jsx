@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import SpeciesListItem from './SpeciesListItem.jsx';
 import SpeciesDrawerDetail from './SpeciesDrawerDetail.jsx';
@@ -14,6 +15,7 @@ class SpeciesList extends Component {
     this.state = {
       species: [],
       isDetailOpen: false,
+      showLoadingIcon: true,
       drawerWidth: 0.9 * window.innerWidth,
       selectedSpecies: {},
     }
@@ -28,7 +30,8 @@ class SpeciesList extends Component {
       
       this.setState({
         species: species,
-        selectedSpecies: species[0] || {}
+        selectedSpecies: species[0] || {},
+        showLoadingIcon: true
       });
     }.bind(this));
   }
@@ -52,6 +55,8 @@ class SpeciesList extends Component {
       <List>
         <Subheader>Species</Subheader>
         {this.renderSpeciesListItems()}
+
+        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}

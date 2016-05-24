@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import VehicleListItem from './VehiclesListItem.jsx';
 import VehicleDrawerDetail from './VehicleDrawerDetail.jsx';
@@ -14,6 +15,7 @@ class VehiclesList extends Component {
     this.state = {
       vehicles: [],
       isDetailOpen: false,
+      showLoadingIcon: true,
       drawerWidth: 0.9 * window.innerWidth,
       selectedVehicle: {},
     }
@@ -28,7 +30,8 @@ class VehiclesList extends Component {
       
       this.setState({
         vehicles: vehicles,
-        selectedVehicle: vehicles[0] || {}
+        selectedVehicle: vehicles[0] || {},
+        showLoadingIcon: false
       });
     }.bind(this));
   }
@@ -52,6 +55,8 @@ class VehiclesList extends Component {
       <List>
         <Subheader>Vehicles</Subheader>
         {this.renderVehiclesListItems()}
+
+        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}
