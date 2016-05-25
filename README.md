@@ -7,7 +7,7 @@
 * Material-UI
 
 # Usage
-<code>
+<pre><code>
     npm install
     npm run dev
-</code>
+</code></pre>
