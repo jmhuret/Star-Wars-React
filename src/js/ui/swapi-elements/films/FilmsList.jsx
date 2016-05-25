@@ -58,9 +58,9 @@ class FilmsList extends Component {
       <div>
         <List>
           <Subheader>Films</Subheader>
+          <LoadingIcon hidden={this.state.showLoadingIcon ? '': 'hidden'}/>
+          
           {this.renderFilmsList()}
-
-          <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
 
           <Drawer docked={false}
             open={this.state.isDetailOpen}

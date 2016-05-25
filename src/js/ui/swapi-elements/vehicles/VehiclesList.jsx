@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
+import Pagination from '../../layout/Pagination.jsx';
 import LoadingIcon from '../../layout/LoadingIcon.jsx';
 
 import VehicleListItem from './VehiclesListItem.jsx';
@@ -16,13 +17,24 @@ class VehiclesList extends Component {
       vehicles: [],
       isDetailOpen: false,
       showLoadingIcon: true,
+      currentPage: 1,
+      totalPages: 1,
       drawerWidth: 0.9 * window.innerWidth,
       selectedVehicle: {},
     }
   }
  
   componentDidMount() {
-    fetch('http://swapi.co/api/vehicles/').then(function (response) {
+    this.getVehicles();
+  }
+
+  getVehicles() {
+    this.setState({
+      showLoadingIcon: true
+    });
+    let url='http://swapi.co/api/vehicles/?page=' + this.state.currentPage;
+
+    fetch(url).then(function (response) {
       return response.json();
     }.bind(this)).then(function (responseJSON) {
       let vehicles = responseJSON.results;
@@ -31,7 +43,8 @@ class VehiclesList extends Component {
       this.setState({
         vehicles: vehicles,
         selectedVehicle: vehicles[0] || {},
-        showLoadingIcon: false
+        showLoadingIcon: false,
+        totalPages: Math.ceil(responseJSON.count / 10)
       });
     }.bind(this));
   }
@@ -50,13 +63,40 @@ class VehiclesList extends Component {
     this.setState({isDetailOpen: false});
   }
 
+  prevPage() {
+    if (this.state.currentPage > 1) {
+      this.setState({currentPage: this.state.currentPage - 1});
+      setTimeout(function () {
+        this.getVehicles();
+      }.bind(this), 0);
+    }
+  }
+
+  nextPage() {
+    if (this.state.currentPage !== this.state.totalPages) {
+      this.setState({currentPage: this.state.currentPage + 1});
+      setTimeout(function () {
+        this.getVehicles();
+      }.bind(this), 0);
+    }
+  }
+
   render() {
     return (
       <List>
         <Subheader>Vehicles</Subheader>
-        {this.renderVehiclesListItems()}
+        <LoadingIcon hidden={this.state.showLoadingIcon ? '': 'hidden'}/>
 
-        <LoadingIcon showLoadingIconClassName={this.state.showLoadingIcon ? '': 'hidden'}/>
+        <div className={this.state.showLoadingIcon ? 'hidden': ''}>
+          {this.renderVehiclesListItems()}
+        </div>
+
+        <Pagination 
+          prevPage = {this.prevPage.bind(this)}
+          nextPage = {this.nextPage.bind(this)} 
+          currentPage = {this.state.currentPage}
+          totalPages = {this.state.totalPages}
+        />
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}
