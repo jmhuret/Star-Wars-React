@@ -8,6 +8,6 @@
 
 # Usage
 <code>
-npm install
-npm run dev
+    npm install
+    npm run dev
 </code>
