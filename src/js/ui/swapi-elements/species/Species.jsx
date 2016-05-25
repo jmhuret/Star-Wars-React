@@ -18,7 +18,7 @@ class Species extends Component {
 				      showExpandableButton={false}
 				    />
 				    <CardText expandable={false}>
-				      Average Lifespan: {this.props.species.average_lifespan}
+				      Average Lifespan: {this.props.species.average_lifespan} years
 				    </CardText>
 				</Card>
 			</div>

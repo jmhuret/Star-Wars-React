@@ -108,7 +108,6 @@ class StarshipsList extends Component {
             starship={this.state.selectedStarship}/>
         </Drawer>
 
-
       </List>
     );
   }

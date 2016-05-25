@@ -58,7 +58,7 @@ class HeaderMenuItems extends Component {
 	      	onTouchTap={this.handleTouchTap.bind(this)}
 	      	containerElement={<Link to="species" activeClassName="active"/>}
 	      	leftIcon={<BugReportIcon />}>
-	      		species
+	      		Species
 	      </MenuItem>
       </div>
     )
