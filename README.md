@@ -6,8 +6,8 @@
 * React-router
 * Material-UI
 
+# Installation
+<code>npm install</code>
+
 # Usage
-<code>
-    npm install
-    npm run dev
-</code>
+<code>npm run dev</code>
