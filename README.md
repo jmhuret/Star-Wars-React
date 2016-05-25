@@ -5,6 +5,9 @@
 * React.js
 * React-router
 * Material-UI
+* Webpack
+* Babel
+* SASS
 
 # Installation
 <code>npm install</code>
