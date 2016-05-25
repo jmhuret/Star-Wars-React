@@ -29,6 +29,10 @@ class StarshipsList extends Component {
   }
 
   getStarships() {
+
+    this.setState({
+      showLoadingIcon: true
+    });
     let url='http://swapi.co/api/starships/?page=' + this.state.currentPage;
 
     fetch(url).then(function (response) {
@@ -63,6 +67,9 @@ class StarshipsList extends Component {
   prevPage() {
     if (this.state.currentPage > 1) {
       this.setState({currentPage: this.state.currentPage - 1});
+      setTimeout(function () {
+        this.getStarships();
+      }.bind(this), 0);
     }
   }
 
@@ -79,17 +86,18 @@ class StarshipsList extends Component {
     return (
       <List>
         <Subheader>Starships</Subheader>
-        {this.renderStarshipsListItems()}
+        <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
+
+        <div className={this.state.showLoadingIcon ? 'hidden': ''}>
+          {this.renderStarshipsListItems()}
+        </div>
 
         <Pagination 
           prevPage = {this.prevPage.bind(this)}
           nextPage = {this.nextPage.bind(this)} 
           currentPage = {this.state.currentPage}
           totalPages = {this.state.totalPages}
-          hidden={this.state.showLoadingIcon ? 'hidden': ''}
-          />
-
-        <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
+        />
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}
