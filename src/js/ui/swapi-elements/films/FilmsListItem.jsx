@@ -6,7 +6,7 @@ import AvMovieIcon from 'material-ui/svg-icons/av/movie';
 class FilmListItem extends Component {
 
 	handleTouchTap() {
-    this.props.viewFilm(this.props.film);
+    this.props.viewListItem(this.props.film);
 	}
 
   render() {

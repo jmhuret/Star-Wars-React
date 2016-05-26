@@ -6,6 +6,7 @@ import Pagination from './Pagination.jsx';
 import LoadingIcon from './LoadingIcon.jsx';
 import DetailDrawerLayout from './DetailDrawerLayout.jsx';
 
+import FilmsListItem from '../swapi-elements/films/FilmsListItem.jsx';
 import PeopleListItem from '../swapi-elements/people/PeopleListItem.jsx';
 import PlanetsListItem from '../swapi-elements/planets/PlanetsListItem.jsx';
 import SpeciesListItem from '../swapi-elements/species/SpeciesListItem.jsx';
@@ -73,7 +74,10 @@ class ListLayout extends Component {
  
   renderListItems() {
     return this.state.listItems.map(function(listItem, index) {
-      if (this.props.route.name === 'people') {
+      if (this.props.route.name === 'films') {
+        return <FilmsListItem key={index} film={listItem} viewListItem={this.viewListItem.bind(this)}/>
+      }
+      else if (this.props.route.name === 'people') {
         return <PeopleListItem key={index} person={listItem} viewListItem={this.viewListItem.bind(this)}/>
       }
       else if (this.props.route.name === 'planets') {
@@ -96,12 +100,15 @@ class ListLayout extends Component {
 
   getDrawerDetail() {
     let DrawerDetail;
-    if (this.props.route.name === 'people') {
+    if (this.props.route.name === 'films') {
+      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+            film={this.state.selectedListItem}/>;
+    }
+    else if (this.props.route.name === 'people') {
       DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
             person={this.state.selectedListItem}/>;
     }
     else if (this.props.route.name === 'planets') {
-      console.log('viewing', this.state.selectedListItem);
       DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
             planet={this.state.selectedListItem}/>;
     }

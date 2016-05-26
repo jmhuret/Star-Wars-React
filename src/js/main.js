@@ -9,7 +9,6 @@ import CreateHashHistory from 'history/lib/createHashHistory';
 
 import Layout from './ui/layout/Layout.jsx';
 import ListLayout from './ui/layout/ListLayout.jsx';
-import FilmsList from './ui/swapi-elements/films/FilmsList.jsx';
 import FilmDetail from './ui/swapi-elements/films/FilmDetail.jsx';
 import StarshipDetail from './ui/swapi-elements/starships/StarshipDetail.jsx';
 import PlanetDetail from './ui/swapi-elements/planets/PlanetDetail.jsx';
@@ -34,7 +33,7 @@ const hashHistory = UseRouterHistory(CreateHashHistory)({
 ReactDOM.render(
  	<Router history={hashHistory}>
   		<Route path="/" component={Layout}>
-  			<Route name="films" path="films" component={FilmsList}></Route>
+  			<Route name="films" path="films" component={ListLayout}></Route>
   			<Route name="film" path="films/:id" component={FilmDetail}></Route>
   			<Route name="starships" path="starships" component={ListLayout}></Route>
   			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>

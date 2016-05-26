@@ -5,6 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationCloseIcon from 'material-ui/svg-icons/navigation/close';
 
+import Film from '../swapi-elements/films/Film.jsx';
 import Person from '../swapi-elements/people/Person.jsx';
 import Planet from '../swapi-elements/planets/Planet.jsx';
 import Species from '../swapi-elements/species/Species.jsx';
@@ -23,7 +24,10 @@ class DrawerDetailLayout extends Component {
 
 	componentWillReceiveProps(props) {
 		let itemTitle;
-		if (props.person) {
+		if (props.film) {
+			itemTitle = props.film.title;
+		}
+		else if (props.person) {
 			itemTitle = props.person.name;
 		}
 		else if (props.planet) {
@@ -47,7 +51,10 @@ class DrawerDetailLayout extends Component {
 	}
 
 	getSelectedItemComponent() {
-		if (this.props.person) {
+		if (this.props.film) {
+			return <Film film={this.props.film}/>
+		}
+		else if (this.props.person) {
 			return <Person person={this.props.person}/>
 		}
 		else if (this.props.planet) {
