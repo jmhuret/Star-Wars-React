@@ -6,7 +6,7 @@ import MapsFlightIcon from 'material-ui/svg-icons/maps/flight';
 class StarshipListItem extends Component {
 
 	handleTouchTap() {
-    this.props.viewStarship(this.props.starship);
+    this.props.viewListItem(this.props.starship);
 	}
 
   render() {

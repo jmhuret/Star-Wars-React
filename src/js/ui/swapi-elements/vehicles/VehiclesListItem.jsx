@@ -6,7 +6,7 @@ import TramIcon from 'material-ui/svg-icons/maps/tram';
 class VehicleListItem extends Component {
 
 	handleTouchTap() {
-    this.props.viewVehicle(this.props.vehicle);
+    this.props.viewListItem(this.props.vehicle);
 	}
 
   render() {

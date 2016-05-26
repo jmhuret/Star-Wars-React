@@ -6,7 +6,7 @@ import PersonIcon from 'material-ui/svg-icons/social/person-outline';
 class PeopleListItem extends Component {
 
 	handleTouchTap() {
-    this.props.viewPerson(this.props.person);
+    this.props.viewListItem(this.props.person);
 	}
 
   render() {

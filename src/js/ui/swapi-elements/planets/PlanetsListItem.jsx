@@ -6,7 +6,7 @@ import LanguageIcon from 'material-ui/svg-icons/action/language';
 class PlanetsListItem extends Component {
 
 	handleTouchTap() {
-    this.props.viewPlanet(this.props.planet);
+    this.props.viewListItem(this.props.planet);
 	}
 
   render() {

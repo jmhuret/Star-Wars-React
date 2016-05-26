@@ -6,7 +6,7 @@ import BugReportIcon from 'material-ui/svg-icons/action/bug-report';
 class SpeciesListItem extends Component {
 
 	handleTouchTap() {
-    this.props.viewSpecies(this.props.species);
+    this.props.viewListItem(this.props.species);
 	}
 
   render() {
