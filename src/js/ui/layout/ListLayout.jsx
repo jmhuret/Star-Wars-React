@@ -21,7 +21,6 @@ class ListLayout extends Component {
 
     this.state = {
       listItems: [],
-      initialRenderComplete: false,
       isDetailOpen: false,
       showLoadingIcon: true,
       currentPage: 1,
@@ -29,30 +28,34 @@ class ListLayout extends Component {
       listItemsUrl: this.props.route.name,
       drawerWidth: 0.9 * window.innerWidth,
       selectedListItem: {},
+      initialRenderComplete: false
     }
   }
  
   componentDidMount() {
+    console.log('Component Did Mount');
     this.getListItems();
   }
 
   componentWillReceiveProps(props) {
     this.setState({
       currentPage: 1,
-      listItemsUrl: props.route.name
+      listItemsUrl: props.route.name,
+      initialRenderComplete: props.route.name === this.props.route.name
     });
+
     setTimeout(function() {
-      if (this.state.initialRenderComplete) {
+      if (!this.state.initialRenderComplete) {
         this.getListItems();
       }
     }.bind(this), 0);
   }
 
   getListItems() {
-
     this.setState({
       showLoadingIcon: true
     });
+
     const baseUrl = 'http://swapi.co/api/';
     let url = baseUrl + this.props.route.name + '/?page=' + this.state.currentPage;
 
@@ -60,7 +63,7 @@ class ListLayout extends Component {
       return response.json();
     }.bind(this)).then(function (responseJSON) {
       let listItems = responseJSON.results;
-      console.log('API response: ', responseJSON);
+      //console.log('API response: ', responseJSON);
       
       this.setState({
         listItems: listItems,

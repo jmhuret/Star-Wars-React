@@ -5,7 +5,6 @@ class Planet extends Component {
 
 	constructor(props) {
 		super(props);
-		console.log('planet props', props);
 	}
 
 	render() {
