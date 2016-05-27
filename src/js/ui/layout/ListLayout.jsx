@@ -33,7 +33,6 @@ class ListLayout extends Component {
   }
  
   componentDidMount() {
-    console.log('Component Did Mount');
     this.getListItems();
   }
 
