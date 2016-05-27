@@ -21,6 +21,7 @@ class ListLayout extends Component {
 
     this.state = {
       listItems: [],
+      initialRenderComplete: false,
       isDetailOpen: false,
       showLoadingIcon: true,
       currentPage: 1,
@@ -41,7 +42,9 @@ class ListLayout extends Component {
       listItemsUrl: props.route.name
     });
     setTimeout(function() {
-      this.getListItems();
+      if (this.state.initialRenderComplete) {
+        this.getListItems();
+      }
     }.bind(this), 0);
   }
 
@@ -63,7 +66,8 @@ class ListLayout extends Component {
         listItems: listItems,
         selectedListItem: listItems[0] || {},
         showLoadingIcon: false,
-        totalPages: Math.ceil(responseJSON.count / 10)
+        totalPages: Math.ceil(responseJSON.count / 10),
+        initialRenderComplete: true
       });
     }.bind(this));
   }
