@@ -32,19 +32,19 @@ const hashHistory = UseRouterHistory(CreateHashHistory)({
  
 ReactDOM.render(
  	<Router history={hashHistory}>
-  		<Route path="/" component={Layout}>
-  			<Route name="films" path="films" component={ListLayout}></Route>
-  			<Route name="film" path="films/:id" component={FilmDetail}></Route>
-  			<Route name="starships" path="starships" component={ListLayout}></Route>
-  			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>
-  			<Route name="planets" path="planets" component={ListLayout}></Route>
-  			<Route name="planet" path="planets/:id" component={PlanetDetail}></Route>
-        <Route name="vehicles" path="vehicles" component={ListLayout}></Route>
-        <Route name="vehicle" path="vehicles/:id" component={VehicleDetail}></Route>
-        <Route name="people" path="people" component={ListLayout}></Route>
-        <Route name="person" path="people/:id" component={PersonDetail}></Route>
-        <Route name="species" path="species" component={ListLayout}></Route>
-        <Route name="speciesDetail" path="species/:id" component={SpeciesDetail}></Route>
-  		</Route>
-  	</Router>
+		<Route path="/" component={Layout}>
+			<Route name="films" path="films" component={ListLayout}></Route>
+			<Route name="film" path="films/:id" component={FilmDetail}></Route>
+			<Route name="starships" path="starships" component={ListLayout}></Route>
+			<Route name="starship" path="starships/:id" component={StarshipDetail}></Route>
+			<Route name="planets" path="planets" component={ListLayout}></Route>
+			<Route name="planet" path="planets/:id" component={PlanetDetail}></Route>
+      <Route name="vehicles" path="vehicles" component={ListLayout}></Route>
+      <Route name="vehicle" path="vehicles/:id" component={VehicleDetail}></Route>
+      <Route name="people" path="people" component={ListLayout}></Route>
+      <Route name="person" path="people/:id" component={PersonDetail}></Route>
+      <Route name="species" path="species" component={ListLayout}></Route>
+      <Route name="speciesDetail" path="species/:id" component={SpeciesDetail}></Route>
+		</Route>
+	</Router>
 , document.getElementById('render-target'));
