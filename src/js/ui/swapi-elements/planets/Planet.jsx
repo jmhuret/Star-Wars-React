@@ -17,6 +17,21 @@ class Planet extends Component {
 				      actAsExpander={false}
 				      showExpandableButton={false}
 				    />
+				    <CardText>
+				    	Population: {this.props.planet.population}
+				    </CardText>
+				    <CardText>
+				    	Rotational Period: {this.props.planet.rotational_period + ' hours'}
+				    </CardText>
+				    <CardText>
+				    	Orbital Period: {this.props.planet.orbital_period + ' days'}
+				    </CardText>
+				    <CardText>
+				    	Gravity: {this.props.planet.gravity + ' Gs'}
+				    </CardText>
+				    <CardText>
+				    	Surface Water: {this.props.surface_water + ' %'}
+				    </CardText>
 				    <CardText expandable={false}>
 				      Terrain: {this.props.planet.terrain}
 				    </CardText>
