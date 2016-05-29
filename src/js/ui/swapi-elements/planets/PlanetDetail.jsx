@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Planet from './Planet.jsx';
 
@@ -11,17 +12,15 @@ class PlanetDetail extends Component {
 	}
 
 	componentDidMount () {
-		fetch('http://swapi.co/api/planets/' + this.props.params.id).then(function (response) {
-	      return response.json();
-	    }.bind(this)).then(function (responseJSON) {
-	      let planet = responseJSON;
-	      console.log('Planet: ', planet);
-	      
-	      this.setState({
-	      	planet: planet
-	      });
 
-	    }.bind(this));
+		$.get('http://swapi.co/api/planets/' + this.props.params.id, function (response) {
+			let planet = response;
+      console.log('Planet: ', planet);
+      
+      this.setState({
+      	planet: planet
+      });
+		}.bind(this));
 	}
 
 	render () {

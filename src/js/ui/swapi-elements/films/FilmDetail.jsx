@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Film from './Film.jsx';
 
@@ -11,17 +12,14 @@ class FilmDetail extends Component {
 	}
 
 	componentDidMount () {
-		fetch('http://swapi.co/api/films/' + this.props.params.id).then(function (response) {
-	      return response.json();
-	    }.bind(this)).then(function (responseJSON) {
-	      let film = responseJSON;
-	      console.log('Film: ', film);
-	      
-	      this.setState({
-	      	film: film
-	      });
-
-	    }.bind(this));
+		$.get('http://swapi.co/api/films/' + this.props.params.id, function (response) {
+			let film = response;
+      //console.log('Film: ', film);
+      
+      this.setState({
+      	film: film
+      });
+		}.bind(this));
 	}
 
 	render () {

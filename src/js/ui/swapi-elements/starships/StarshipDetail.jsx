@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Starship from './Starship.jsx';
 
@@ -11,17 +12,15 @@ class StarshipDetail extends Component {
 	}
 
 	componentDidMount () {
-		fetch('http://swapi.co/api/starships/' + this.props.params.id).then(function (response) {
-	      return response.json();
-	    }.bind(this)).then(function (responseJSON) {
-	      let starship = responseJSON;
-	      console.log('Starship: ', starship);
-	      
-	      this.setState({
-	      	starship: starship
-	      });
 
-	    }.bind(this));
+		$.get('http://swapi.co/api/starships/' + this.props.params.id, function (response) {
+			let starship = response;
+      console.log('Starship: ', starship);
+      
+      this.setState({
+      	starship: starship
+      });
+		}.bind(this));
 	}
 
 	render () {

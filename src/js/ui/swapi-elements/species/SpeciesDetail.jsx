@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Species from './Species.jsx';
 
@@ -11,17 +12,14 @@ class SpeciesDetail extends Component {
 	}
 
 	componentDidMount () {
-		fetch('http://swapi.co/api/species/' + this.props.params.id).then(function (response) {
-	      return response.json();
-	    }.bind(this)).then(function (responseJSON) {
-	      let species = responseJSON;
-	      console.log('Species: ', species);
-	      
-	      this.setState({
-	      	species: species
-	      });
-
-	    }.bind(this));
+		$.get('http://swapi.co/api/species/' + this.props.params.id, function (response) {
+			let species = response;
+      console.log('Species: ', species);
+      
+      this.setState({
+      	species: species
+      });
+		}.bind(this));
 	}
 
 	render () {

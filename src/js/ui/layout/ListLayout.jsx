@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+
 import List from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Drawer from 'material-ui/Drawer';
@@ -58,19 +60,18 @@ class ListLayout extends Component {
     const baseUrl = 'http://swapi.co/api/';
     let url = baseUrl + this.props.route.name + '/?page=' + this.state.currentPage;
 
-    fetch(url).then(function (response) {
-      return response.json();
-    }.bind(this)).then(function (responseJSON) {
-      let listItems = responseJSON.results;
-      //console.log('API response: ', responseJSON);
-      
+    $.get(url, function (response) {
+      console.log('response', response);
+      let listItems = response.results;
+
       this.setState({
         listItems: listItems,
         selectedListItem: listItems[0] || {},
         showLoadingIcon: false,
-        totalPages: Math.ceil(responseJSON.count / 10),
+        totalPages: Math.ceil(response.count / 10),
         initialRenderComplete: true
       });
+      
     }.bind(this));
   }
 

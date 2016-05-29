@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Vehicle from './Vehicle.jsx';
 
@@ -11,17 +12,15 @@ class VehicleDetail extends Component {
 	}
 
 	componentDidMount () {
-		fetch('http://swapi.co/api/vehicles/' + this.props.params.id).then(function (response) {
-	      return response.json();
-	    }.bind(this)).then(function (responseJSON) {
-	      let vehicle = responseJSON;
-	      console.log('Vehicle: ', vehicle);
-	      
-	      this.setState({
-	      	vehicle: vehicle
-	      });
+		$.get('http://swapi.co/api/vehicles/' + this.props.params.id, function (response) {
+			let vehicle = response;
+      console.log('Vehicle: ', vehicle);
+      
+      this.setState({
+      	vehicle: vehicle
+      });
 
-	    }.bind(this));
+		}.bind(this));
 	}
 
 	render () {

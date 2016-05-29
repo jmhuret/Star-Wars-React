@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Person from './Person.jsx';
 
@@ -11,17 +12,15 @@ class PersonDetail extends Component {
 	}
 
 	componentDidMount () {
-		fetch('http://swapi.co/api/people/' + this.props.params.id).then(function (response) {
-	      return response.json();
-	    }.bind(this)).then(function (responseJSON) {
-	      let person = responseJSON;
-	      console.log('Person: ', person);
-	      
-	      this.setState({
-	      	person: person
-	      });
+		$.get('http://swapi.co/api/people/' + this.props.params.id, function (response) {
+			let person = response;
+      console.log('Person: ', person);
+      
+      this.setState({
+      	person: person
+      });
 
-	    }.bind(this));
+		}.bind(this));
 	}
 
 	render () {
