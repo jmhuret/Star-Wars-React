@@ -18,7 +18,22 @@ class Starship extends Component {
 				      showExpandableButton={false}
 				    />
 				    <CardText expandable={false}>
-				      Capacity: {this.props.starship.crew}
+				      Length: {this.props.starship.length + ' meters'}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Passenger Capacity: {this.props.starship.passengers}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Crew Capacity: {this.props.starship.crew}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Cargo Capacity: {this.props.starship.cargo_capacity + ' kgs'}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Class: {this.props.starship.starship_class}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Manufacturer: {this.props.starship.manufacturer}
 				    </CardText>
 				</Card>
 			</div>
