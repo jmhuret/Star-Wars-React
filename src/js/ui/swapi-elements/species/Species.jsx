@@ -18,7 +18,25 @@ class Species extends Component {
 				      showExpandableButton={false}
 				    />
 				    <CardText expandable={false}>
+				      Designation: {this.props.species.designation}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Average Height: {this.props.species.average_height} centimeters
+				    </CardText>
+				    <CardText expandable={false}>
 				      Average Lifespan: {this.props.species.average_lifespan} years
+				    </CardText>
+				    <CardText expandable={false}>
+				      Eye Colors: {this.props.species.eye_colors}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Hair Colors: {this.props.species.hair_colors}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Skin Colors: {this.props.species.skin_colors}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Language: {this.props.species.language}
 				    </CardText>
 				</Card>
 			</div>
