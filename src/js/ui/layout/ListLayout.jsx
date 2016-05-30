@@ -14,6 +14,8 @@ import PlanetsListItem from '../swapi-elements/planets/PlanetsListItem.jsx';
 import SpeciesListItem from '../swapi-elements/species/SpeciesListItem.jsx';
 import StarshipsListItem from '../swapi-elements/starships/StarshipsListItem.jsx';
 import VehiclesListItem from '../swapi-elements/vehicles/VehiclesListItem.jsx';
+
+require('./listLayout.scss');
  
 class ListLayout extends Component {
 
@@ -167,11 +169,12 @@ class ListLayout extends Component {
 
     return (
       <List>
-        <Subheader>{capitalizedName}</Subheader>
-        <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
-
-        <div className={this.state.showLoadingIcon ? 'hidden': ''}>
-          {this.renderListItems()}
+        <div className="listItems">
+          <Subheader>{capitalizedName}</Subheader>
+          <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
+          <div className={this.state.showLoadingIcon ? 'hidden': ''}>
+            {this.renderListItems()}
+          </div>
         </div>
 
         <Pagination 

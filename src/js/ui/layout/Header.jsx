@@ -31,6 +31,7 @@ class Header extends Component {
       <div>
         <AppBar
           title="Star Wars"
+          className="headerAppBar"
           iconElementLeft={
             <IconButton onTouchTap={this.handleLeftIconAction.bind(this)}>
               <NavigationMenuIcon />

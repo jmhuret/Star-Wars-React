@@ -15,7 +15,7 @@ class Pagination extends Component {
 
 	render() {
 		return (
-			<div className={'pagination ' + this.props.hidden}>
+			<div className={'pagination ' + (this.props.hidden || '')}>
 
 				<div className="previousButton">
 					<FlatButton label="Prev"
