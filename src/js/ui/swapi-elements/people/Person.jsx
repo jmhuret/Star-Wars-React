@@ -23,11 +23,24 @@ class Person extends Component {
 				      showExpandableButton={false}
 				    />
 				    <CardText expandable={false}>
+				      Birth Year: {this.props.person.birth_year}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Eye Color: {this.props.person.eye_color}
+				    </CardText>
+				    <CardText expandable={false}>
+				      Hair Color: {this.props.person.hair_color}
+				    </CardText>
+				    <CardText expandable={false}>
 				      Height: {feet} feet {inches} inches
 				    </CardText>
 				    <CardText expandable={false}>
 				    	Weight: {pounds} lbs
 				    </CardText>
+				    <CardText expandable={false}>
+				      Skin Color: {this.props.person.skin_color}
+				    </CardText>
+				    
 				</Card>
 			</div>
 		)
