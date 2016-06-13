@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import {Card, CardHeader, CardText} from 'material-ui/Card';
+import $ from 'jquery';
 
 class Film extends Component {
 
 	constructor(props) {
 		super(props);
+	}
+
+	componentDidMount() {
+		$.get('http://localhost:1337/users', function (response) {
+			console.log('Users', response);
+		});
 	}
 
 	render() {
