@@ -107,37 +107,65 @@ class ListLayout extends Component {
     }.bind(this));
   }
 
-  getDrawerDetail() {
-    let DrawerDetail;
-    if (this.props.route.name === 'films') {
-      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
-            film={this.state.selectedListItem}/>;
-    }
-    else if (this.props.route.name === 'people') {
-      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
-            person={this.state.selectedListItem}/>;
-    }
-    else if (this.props.route.name === 'planets') {
-      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
-            planet={this.state.selectedListItem}/>;
-    }
-    else if (this.props.route.name === 'species') {
-      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
-            species={this.state.selectedListItem}/>;
-    }
-    else if (this.props.route.name === 'starships') {
-      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
-            starship={this.state.selectedListItem}/>;
-    }
-    else if (this.props.route.name === 'vehicles') {
-      DrawerDetail = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
-            vehicle={this.state.selectedListItem}/>;
+  getDetailDrawer() {
+    let DetailDrawer;
+
+    if (this.state.isDetailOpen) {
+      if (this.props.route.name === 'films') {
+        DetailDrawer = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+              film={this.state.selectedListItem}
+              itemTitle={this.state.selectedListItem.title}/>;
+      }
+      else if (this.props.route.name === 'people') {
+        DetailDrawer = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+              person={this.state.selectedListItem}
+              itemTitle={this.state.selectedListItem.name}/>;
+      }
+      else if (this.props.route.name === 'planets') {
+        DetailDrawer = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+              planet={this.state.selectedListItem}
+              itemTitle={this.state.selectedListItem.name}/>;
+      }
+      else if (this.props.route.name === 'species') {
+        DetailDrawer = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+              species={this.state.selectedListItem}
+              itemTitle={this.state.selectedListItem.name}/>;
+      }
+      else if (this.props.route.name === 'starships') {
+        DetailDrawer = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+              starship={this.state.selectedListItem}
+              itemTitle={this.state.selectedListItem.name}/>;
+      }
+      else if (this.props.route.name === 'vehicles') {
+        DetailDrawer = <DetailDrawerLayout handleCloseDetail={this.handleCloseDetail.bind(this)}
+              vehicle={this.state.selectedListItem}
+              itemTitle={this.state.selectedListItem.name}/>;
+      }
+      else {
+        DetailDrawer = <div/>
+      }
     }
     else {
-      DrawerDetail = <div/>
+      DetailDrawer = <div/>
     }
 
-    return DrawerDetail;
+    return DetailDrawer;
+  }
+
+  getPagination() {
+    if (this.state.totalPages > 1) {
+      return (
+        <Pagination 
+          prevPage = {this.prevPage.bind(this)}
+          nextPage = {this.nextPage.bind(this)} 
+          currentPage = {this.state.currentPage}
+          totalPages = {this.state.totalPages}
+        />
+      );
+    }
+    else {
+      return (<div/>);
+    }
   }
 
   handleCloseDetail () {
@@ -164,35 +192,32 @@ class ListLayout extends Component {
 
   render() {
 
-    let DrawerDetail = this.getDrawerDetail();
+    let Pagination = this.getPagination();
+    let DetailDrawer = this.getDetailDrawer();
     let capitalizedName = this.props.route.name.charAt(0).toUpperCase() + this.props.route.name.slice(1);
 
     return (
-      <List>
-        <div className="listItems">
-          <Subheader>{capitalizedName}</Subheader>
-          <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
-          <div className={this.state.showLoadingIcon ? 'hidden': ''}>
-            {this.renderListItems()}
+      <div>
+        <List>
+          <div className="listItems">
+            <Subheader>{capitalizedName}</Subheader>
+            <LoadingIcon hidden={!this.state.showLoadingIcon ? 'hidden': ''}/>
+            <div className={this.state.showLoadingIcon ? 'hidden': ''}>
+              {this.renderListItems()}
+            </div>
           </div>
-        </div>
+        </List>
 
-        <Pagination 
-          prevPage = {this.prevPage.bind(this)}
-          nextPage = {this.nextPage.bind(this)} 
-          currentPage = {this.state.currentPage}
-          totalPages = {this.state.totalPages}
-        />
+        {Pagination}
 
         <Drawer docked={false}
           open={this.state.isDetailOpen}
           openSecondary={true}
           onRequestChange={(isDetailOpen) => this.setState({isDetailOpen})}
           width={this.state.drawerWidth}>
-          {DrawerDetail}
+          {DetailDrawer}
         </Drawer>
-
-      </List>
+      </div>
     );
   }
 }

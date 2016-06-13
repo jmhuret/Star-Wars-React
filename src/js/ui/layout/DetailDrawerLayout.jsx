@@ -14,38 +14,6 @@ import Vehicle from '../swapi-elements/vehicles/Vehicle.jsx';
 
 class DrawerDetailLayout extends Component {
 
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			itemTitle: ''
-		}
-	}
-
-	componentWillReceiveProps(props) {
-		let itemTitle;
-		if (props.film) {
-			itemTitle = props.film.title;
-		}
-		else if (props.person) {
-			itemTitle = props.person.name;
-		}
-		else if (props.planet) {
-			itemTitle = props.planet.name;
-		}
-		else if (props.species) {
-			itemTitle = props.species.name;
-		}
-		else if (props.starship) {
-			itemTitle = props.starship.name;
-		}
-		else if (props.vehicle) {
-			itemTitle = props.vehicle.name;
-		}
-
-		this.setState({itemTitle: itemTitle});
-	}
-
 	handleTouchTap() {
 		this.props.handleCloseDetail();
 	}
@@ -77,7 +45,7 @@ class DrawerDetailLayout extends Component {
 		return (
 			<div>
 	      <AppBar
-	        title={this.state.itemTitle}
+	        title={this.props.itemTitle}
 	        showMenuIconButton={false}
 	        iconElementRight={
 	          <IconButton onTouchTap={this.handleTouchTap.bind(this)}>
